@@ -10,6 +10,8 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #ffffff;
       color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .container {
@@ -21,8 +23,8 @@
     header {
       position: sticky;
       top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid #e5e7eb;
       z-index: 10;
     }
@@ -60,14 +62,22 @@
       text-decoration: none;
       color: #4b5563;
       font-size: 14px;
+      transition: color 0.2s ease;
     }
 
     nav a:hover {
       color: #111827;
     }
 
+    .hero-wrap {
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.10), transparent 35%),
+        radial-gradient(circle at top right, rgba(99,102,241,0.08), transparent 30%),
+        linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    }
+
     .hero {
-      padding: 90px 0 80px;
+      padding: 96px 0 88px;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 48px;
@@ -82,7 +92,8 @@
       border-radius: 999px;
       padding: 8px 12px;
       margin-bottom: 24px;
-      background: #fff;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 16px rgba(15,23,42,0.04);
     }
 
     .hero-logo {
@@ -92,15 +103,16 @@
     }
 
     h1 {
-      font-size: 56px;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
       margin: 0;
+      max-width: 720px;
     }
 
     .hero p {
       font-size: 18px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #4b5563;
       margin-top: 24px;
       max-width: 640px;
@@ -121,11 +133,18 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 600;
+      transition: all 0.2s ease;
     }
 
     .button-primary {
       background: #111827;
       color: white;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15,23,42,0.16);
     }
 
     .button-secondary {
@@ -134,18 +153,48 @@
       background: white;
     }
 
-    .hero-card {
+    .button-secondary:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+
+    .product-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .product-strip span {
+      display: inline-block;
+      padding: 10px 14px;
       border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+    }
+
+    .hero-card {
+      border: 1px solid rgba(229,231,235,0.9);
       border-radius: 28px;
-      background: #fff;
+      background: rgba(255,255,255,0.92);
       padding: 20px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+      transition: all 0.2s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 64px rgba(15,23,42,0.10);
     }
 
     .hero-card-inner {
       border: 1px solid #e5e7eb;
       border-radius: 22px;
-      background: #f9fafb;
+      background: #f8fafc;
       padding: 24px;
     }
 
@@ -155,6 +204,7 @@
       border-radius: 18px;
       padding: 18px;
       margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
     }
 
     .mini-grid {
@@ -164,7 +214,7 @@
     }
 
     section {
-      padding: 80px 0;
+      padding: 84px 0;
     }
 
     .section-light {
@@ -195,10 +245,17 @@
     }
 
     .card {
-      border: 1px solid #e5e7eb;
+      border: 1px solid rgba(229,231,235,0.9);
       border-radius: 28px;
       padding: 24px;
       background: white;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.08);
     }
 
     .card.dark {
@@ -230,6 +287,7 @@
       padding: 24px;
       background: white;
       margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.05);
     }
 
     .contact {
@@ -246,6 +304,7 @@
     .contact .button-primary {
       background: white;
       color: #111827;
+      box-shadow: none;
     }
 
     footer {
@@ -263,7 +322,7 @@
       }
 
       h1 {
-        font-size: 40px;
+        font-size: 42px;
       }
 
       h2 {
@@ -272,6 +331,10 @@
 
       nav {
         display: none;
+      }
+
+      .hero {
+        padding: 72px 0 64px;
       }
     }
   </style>
@@ -295,43 +358,51 @@
   </header>
 
   <main>
-    <section>
-      <div class="container hero">
-        <div>
-          <div class="badge">Independent software studio</div>
-          <img src="Culdesac-logo.svg" alt="Culdesac Software" class="hero-logo" />
-          <h1>Software built with the clarity of a company that starts at the end of the street.</h1>
-          <p>
-            Culdesac Software creates focused, practical products with a clean user experience,
-            a founder’s attention to detail, and a bias toward simplicity over noise.
-          </p>
-          <div class="buttons">
-            <a href="#products" class="button-primary">Explore products</a>
-            <a href="#contact" class="button-secondary">Get in touch</a>
+    <div class="hero-wrap">
+      <section>
+        <div class="container hero">
+          <div>
+            <div class="badge">Independent software studio</div>
+            <img src="Culdesac-logo.svg" alt="Culdesac Software" class="hero-logo" />
+            <h1>Focused software. Thoughtfully built.</h1>
+            <p>
+              Culdesac Software builds clean, practical applications with a founder’s attention
+              to detail, strong fundamentals, and a bias toward simplicity.
+            </p>
+            <div class="buttons">
+              <a href="#products" class="button-primary">Explore products</a>
+              <a href="#contact" class="button-secondary">Get in touch</a>
+            </div>
+            <div class="product-strip">
+              <span>Founder-led</span>
+              <span>Independent studio</span>
+              <span>Focused products</span>
+              <span>Built for clarity</span>
+            </div>
           </div>
-        </div>
 
-        <div class="hero-card">
-          <div class="hero-card-inner">
-            <div class="mini-card">
-              <div class="eyebrow">Approach</div>
-              <h3>Focused products</h3>
-              <p>Designed to solve real problems without unnecessary complexity.</p>
-            </div>
-            <div class="mini-grid">
+          <div class="hero-card">
+            <div class="hero-card-inner">
               <div class="mini-card">
-                <h3>Founder-led</h3>
-                <p>Direct product thinking, fast decisions, careful execution.</p>
+                <div class="eyebrow">Approach</div>
+                <h3>Focused products</h3>
+                <p>Designed to solve real problems without unnecessary complexity.</p>
               </div>
-              <div class="mini-card">
-                <h3>Built to last</h3>
-                <p>Clean systems, strong fundamentals, modern infrastructure.</p>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <h3>Founder-led</h3>
+                  <p>Direct product thinking, fast decisions, careful execution.</p>
+                </div>
+                <div class="mini-card">
+                  <h3>Built to last</h3>
+                  <p>Clean systems, strong fundamentals, modern infrastructure.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <section id="products" class="section-light">
       <div class="container">
