@@ -1,207 +1,471 @@
-export default function CuldesacSoftwareLandingPage() {
-  return (
-    <div className="min-h-screen bg-white text-zinc-900">
-      <header className="sticky top-0 z-20 border-b border-zinc-200/80 bg-white/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-8">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center">
-              <img src="/culdesac_logo_only.svg" alt="Culdesac Software logo" className="h-10 w-auto" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold tracking-tight">Culdesac Software</div>
-              <div className="text-xs text-zinc-500">Simple software, thoughtfully built.</div>
-            </div>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culdesac Software</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111827;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-          <nav className="hidden items-center gap-8 text-sm text-zinc-600 md:flex">
-            <a href="#products" className="transition hover:text-zinc-900">Products</a>
-            <a href="#about" className="transition hover:text-zinc-900">About</a>
-            <a href="#contact" className="transition hover:text-zinc-900">Contact</a>
-          </nav>
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 10;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      height: 44px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .brand-subtitle {
+      font-size: 12px;
+      color: #6b7280;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: #111827;
+    }
+
+    .hero-wrap {
+      background:
+        radial-gradient(circle at top left, rgba(59,130,246,0.10), transparent 35%),
+        radial-gradient(circle at top right, rgba(99,102,241,0.08), transparent 30%),
+        linear-gradient(to bottom, #ffffff 0%, #f8fafc 100%);
+    }
+
+    .hero {
+      padding: 96px 0 88px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      color: #4b5563;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+    }
+
+    h1 {
+      font-size: 58px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin: 0;
+      max-width: 720px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.75;
+      color: #4b5563;
+      margin-top: 24px;
+      max-width: 640px;
+    }
+
+    .buttons {
+      margin-top: 36px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .button-primary {
+      background: #111827;
+      color: white;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px rgba(15,23,42,0.16);
+    }
+
+    .button-secondary {
+      border: 1px solid #d1d5db;
+      color: #111827;
+      background: white;
+    }
+
+    .button-secondary:hover {
+      background: #f8fafc;
+      transform: translateY(-1px);
+    }
+
+    .product-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .product-strip span {
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      color: #475569;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.04);
+    }
+
+    .hero-card {
+      border: 1px solid rgba(229,231,235,0.9);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.92);
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(15,23,42,0.08);
+      transition: all 0.2s ease;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 64px rgba(15,23,42,0.10);
+    }
+
+    .hero-card-inner {
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      background: #f8fafc;
+      padding: 24px;
+    }
+
+    .mini-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(15,23,42,0.04);
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .section-light {
+      background: #f8fafc;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+
+    .section-copy {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #4b5563;
+      max-width: 760px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      border: 1px solid rgba(229,231,235,0.9);
+      border-radius: 28px;
+      padding: 24px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.06);
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.08);
+    }
+
+    .card.dark {
+      background: #111827;
+      color: white;
+    }
+
+    .card .eyebrow {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .card.dark .eyebrow,
+    .card.dark p {
+      color: #d1d5db;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .side-box {
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      padding: 24px;
+      background: white;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.05);
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .contact p {
+      color: #d1d5db;
+      max-width: 700px;
+    }
+
+    .contact .button-primary {
+      background: white;
+      color: #111827;
+      box-shadow: none;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .cards,
+      .about-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 72px 0 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="culdesac_logo_only.svg" alt="Culdesac Software logo" />
+        <div>
+          <div class="brand-title">Culdesac Software</div>
+          <div class="brand-subtitle">Simple software, thoughtfully built.</div>
         </div>
-      </header>
-
-      <main>
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,0,0,0.06),transparent_45%)]" />
-          <div className="mx-auto grid max-w-6xl gap-14 px-6 py-20 lg:grid-cols-2 lg:px-8 lg:py-28">
-            <div className="relative z-10 flex flex-col justify-center">
-              <div className="mb-6 inline-flex w-fit items-center rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-600 shadow-sm">
-                Independent software studio
-              </div>
-              <img src="/culdesac-logo.svg" alt="Culdesac Software" className="mb-8 h-16 w-auto" />
-              <h1 className="max-w-xl text-5xl font-semibold tracking-tight text-zinc-950 sm:text-6xl">
-                Software built with the clarity of a company that starts at the end of the street.
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-600">
-                Culdesac Software creates focused, practical products with a clean user experience,
-                a founder’s attention to detail, and a bias toward simplicity over noise.
-              </p>
-              <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#products"
-                  className="inline-flex items-center justify-center rounded-2xl bg-zinc-950 px-6 py-3 text-sm font-medium text-white shadow-lg shadow-zinc-300/50 transition hover:-translate-y-0.5"
-                >
-                  Explore products
-                </a>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-2xl border border-zinc-300 bg-white px-6 py-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50"
-                >
-                  Get in touch
-                </a>
-              </div>
-            </div>
-
-            <div className="relative z-10 flex items-center justify-center">
-              <div className="relative w-full max-w-xl">
-                <div className="absolute -left-10 top-8 h-40 w-40 rounded-full bg-zinc-100 blur-3xl" />
-                <div className="absolute -right-8 bottom-0 h-48 w-48 rounded-full bg-zinc-200/70 blur-3xl" />
-                <div className="relative rounded-[2rem] border border-zinc-200 bg-white p-5 shadow-2xl shadow-zinc-300/40">
-                  <div className="rounded-[1.5rem] border border-zinc-200 bg-zinc-50 p-6">
-                    <div className="mb-5 flex items-center gap-2">
-                      <div className="h-2.5 w-2.5 rounded-full bg-zinc-300" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-zinc-300" />
-                      <div className="h-2.5 w-2.5 rounded-full bg-zinc-300" />
-                    </div>
-                    <div className="grid gap-4">
-                      <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                        <div className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400">Approach</div>
-                        <div className="mt-2 text-lg font-semibold">Focused products</div>
-                        <p className="mt-2 text-sm leading-6 text-zinc-600">
-                          Designed to solve real problems without unnecessary complexity.
-                        </p>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                          <div className="text-sm font-semibold">Founder-led</div>
-                          <p className="mt-2 text-sm leading-6 text-zinc-600">
-                            Direct product thinking, fast decisions, careful execution.
-                          </p>
-                        </div>
-                        <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
-                          <div className="text-sm font-semibold">Built to last</div>
-                          <p className="mt-2 text-sm leading-6 text-zinc-600">
-                            Clean systems, strong fundamentals, modern infrastructure.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="products" className="border-t border-zinc-200 bg-zinc-50/70">
-          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-            <div className="max-w-2xl">
-              <div className="text-sm font-medium text-zinc-500">Products</div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
-                Current and future software from Culdesac Software.
-              </h2>
-              <p className="mt-4 text-base leading-7 text-zinc-600">
-                A portfolio of practical applications shaped by real-world workflows and a strong point of view on usability.
-              </p>
-            </div>
-
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              <div className="rounded-[1.75rem] border border-zinc-200 bg-white p-6 shadow-sm">
-                <div className="text-sm font-medium text-zinc-500">Featured</div>
-                <h3 className="mt-3 text-xl font-semibold">RetroSpek</h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-600">
-                  A focused app experience built to capture and revisit the moments that matter.
-                </p>
-                <div className="mt-6 inline-flex rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-500">
-                  Active product
-                </div>
-              </div>
-
-              <div className="rounded-[1.75rem] border border-dashed border-zinc-300 bg-white p-6 shadow-sm">
-                <div className="text-sm font-medium text-zinc-500">In development</div>
-                <h3 className="mt-3 text-xl font-semibold">More focused apps</h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-600">
-                  Additional software products are being developed with the same emphasis on clarity, utility, and elegant execution.
-                </p>
-                <div className="mt-6 inline-flex rounded-full border border-zinc-200 px-3 py-1 text-xs font-medium text-zinc-500">
-                  Coming soon
-                </div>
-              </div>
-
-              <div className="rounded-[1.75rem] border border-zinc-200 bg-zinc-950 p-6 text-white shadow-sm">
-                <div className="text-sm font-medium text-zinc-400">Philosophy</div>
-                <h3 className="mt-3 text-xl font-semibold text-white">Less clutter. More signal.</h3>
-                <p className="mt-3 text-sm leading-6 text-zinc-300">
-                  Every product is intended to feel simple, fast, and inevitable — as if it could not have been designed any other way.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="about">
-          <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-            <div>
-              <div className="text-sm font-medium text-zinc-500">About</div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl">
-                Founder-led software with a clean point of view.
-              </h2>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-zinc-600">
-                Culdesac Software reflects an independent builder mindset: create products carefully,
-                keep the experience sharp, and focus on the details users actually notice. The company’s
-                name is a nod to where the work began — a personal office above the garage at the end of a cul-de-sac.
-              </p>
-            </div>
-
-            <div className="grid gap-4">
-              <div className="rounded-[1.75rem] border border-zinc-200 bg-white p-6 shadow-sm">
-                <div className="text-sm font-semibold text-zinc-900">Principles</div>
-                <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-600">
-                  <li>Clarity over feature bloat</li>
-                  <li>Craft over noise</li>
-                  <li>Tools that respect the user’s time</li>
-                </ul>
-              </div>
-              <div className="rounded-[1.75rem] border border-zinc-200 bg-zinc-50 p-6 shadow-sm">
-                <div className="text-sm font-semibold text-zinc-900">Built for the long term</div>
-                <p className="mt-3 text-sm leading-6 text-zinc-600">
-                  The goal is not just to launch software, but to build a durable portfolio of products people genuinely want to keep using.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="contact" className="border-t border-zinc-200 bg-zinc-950 text-white">
-          <div className="mx-auto max-w-6xl px-6 py-20 lg:px-8">
-            <div className="max-w-3xl">
-              <div className="text-sm font-medium text-zinc-400">Contact</div>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                Let’s connect.
-              </h2>
-              <p className="mt-4 text-base leading-8 text-zinc-300">
-                For product inquiries, partnerships, or early conversations, reach out and we’ll take it from there.
-              </p>
-            </div>
-
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="mailto:hello@culdesacsoftware.com"
-                className="inline-flex items-center justify-center rounded-2xl bg-white px-6 py-3 text-sm font-medium text-zinc-950 transition hover:-translate-y-0.5"
-              >
-                hello@culdesacsoftware.com
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-2xl border border-zinc-700 px-6 py-3 text-sm font-medium text-white transition hover:bg-zinc-900"
-              >
-                View products
-              </a>
-            </div>
-          </div>
-        </section>
-      </main>
+      </div>
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  );
-}
+  </header>
+
+  <main>
+    <div class="hero-wrap">
+      <section>
+        <div class="container hero">
+          <div>
+            <div class="badge">Independent software studio</div>
+            <h1>Focused software. Thoughtfully built.</h1>
+            <p>
+              Culdesac Software builds clean, practical applications with a founder’s attention
+              to detail, strong fundamentals, and a bias toward simplicity.
+            </p>
+            <div class="buttons">
+              <a href="#products" class="button-primary">Explore products</a>
+              <a href="#contact" class="button-secondary">Get in touch</a>
+            </div>
+            <div class="product-strip">
+              <span>Founder-led</span>
+              <span>Independent studio</span>
+              <span>Focused products</span>
+              <span>Built for clarity</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-card-inner">
+              <div class="mini-card">
+                <div class="eyebrow">Approach</div>
+                <h3>Focused products</h3>
+                <p>Designed to solve real problems without unnecessary complexity.</p>
+              </div>
+              <div class="mini-grid">
+                <div class="mini-card">
+                  <h3>Founder-led</h3>
+                  <p>Direct product thinking, fast decisions, careful execution.</p>
+                </div>
+                <div class="mini-card">
+                  <h3>Built to last</h3>
+                  <p>Clean systems, strong fundamentals, modern infrastructure.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section id="products" class="section-light">
+      <div class="container">
+        <h2>Current and future software from Culdesac Software.</h2>
+        <p class="section-copy">
+          A portfolio of practical applications shaped by real-world workflows and a strong point of view on usability.
+        </p>
+
+        <div class="cards">
+          <div class="card">
+            <div class="eyebrow">Featured</div>
+            <h3>RetroSpek</h3>
+            <p>A focused app experience built to capture and revisit the moments that matter.</p>
+          </div>
+
+          <div class="card">
+            <div class="eyebrow">In development</div>
+            <h3>More focused apps</h3>
+            <p>Additional software products are being developed with the same emphasis on clarity, utility, and elegant execution.</p>
+          </div>
+
+          <div class="card dark">
+            <div class="eyebrow">Philosophy</div>
+            <h3>Less clutter. More signal.</h3>
+            <p>Every product is intended to feel simple, fast, and inevitable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <h2>Founder-led software with a clean point of view.</h2>
+          <p class="section-copy">
+            Culdesac Software reflects an independent builder mindset: create products carefully,
+            keep the experience sharp, and focus on the details users actually notice. The company’s
+            name is a nod to where the work began — a personal office above the garage at the end of a cul-de-sac.
+          </p>
+        </div>
+
+        <div>
+          <div class="side-box">
+            <h3>Principles</h3>
+            <p>Clarity over feature bloat<br />Craft over noise<br />Tools that respect the user’s time</p>
+          </div>
+          <div class="side-box" style="background:#f9fafb;">
+            <h3>Built for the long term</h3>
+            <p>The goal is not just to launch software, but to build a durable portfolio of products people genuinely want to keep using.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Let’s connect.</h2>
+        <p>
+          For product inquiries, partnerships, or early conversations, reach out and we’ll take it from there.
+        </p>
+        <div class="buttons">
+          <a href="mailto:hello@culdesacsoftware.com" class="button-primary">hello@culdesacsoftware.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2026 Culdesac Software</div>
+  </footer>
+</body>
+</html>
