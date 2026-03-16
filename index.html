@@ -1,123 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Culdesac Software</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #ffffff;
+      color: #111827;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-<title>Culdesac Software</title>
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 10;
+    }
 
-<style>
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
 
-body{
-font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial;
-margin:0;
-background:#ffffff;
-color:#0f172a;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.container{
-max-width:1000px;
-margin:auto;
-padding:80px 20px;
-}
+    .brand img {
+      height: 40px;
+      width: auto;
+    }
 
-h1{
-font-size:48px;
-line-height:1.1;
-}
+    .brand-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-p{
-font-size:18px;
-color:#475569;
-}
+    .brand-subtitle {
+      font-size: 12px;
+      color: #6b7280;
+    }
 
-.hero{
-padding-top:120px;
-}
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #4b5563;
+      font-size: 14px;
+    }
 
-.button{
-display:inline-block;
-background:#0f172a;
-color:white;
-padding:14px 22px;
-border-radius:10px;
-text-decoration:none;
-margin-top:20px;
-}
+    nav a:hover {
+      color: #111827;
+    }
 
-.section{
-margin-top:120px;
-}
+    .hero {
+      padding: 90px 0 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
 
-.card{
-background:#f8fafc;
-padding:30px;
-border-radius:16px;
-margin-top:20px;
-}
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      color: #4b5563;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 8px 12px;
+      margin-bottom: 24px;
+      background: #fff;
+    }
 
-footer{
-margin-top:120px;
-color:#64748b;
-font-size:14px;
-}
+    .hero-logo {
+      height: 64px;
+      width: auto;
+      margin-bottom: 24px;
+    }
 
-</style>
+    h1 {
+      font-size: 56px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
 
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #4b5563;
+      margin-top: 24px;
+      max-width: 640px;
+    }
+
+    .buttons {
+      margin-top: 36px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button-primary,
+    .button-secondary {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .button-primary {
+      background: #111827;
+      color: white;
+    }
+
+    .button-secondary {
+      border: 1px solid #d1d5db;
+      color: #111827;
+      background: white;
+    }
+
+    .hero-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    .hero-card-inner {
+      border: 1px solid #e5e7eb;
+      border-radius: 22px;
+      background: #f9fafb;
+      padding: 24px;
+    }
+
+    .mini-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-light {
+      background: #f8fafc;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+
+    .section-copy {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #4b5563;
+      max-width: 760px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      padding: 24px;
+      background: white;
+    }
+
+    .card.dark {
+      background: #111827;
+      color: white;
+    }
+
+    .card .eyebrow {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .card.dark .eyebrow,
+    .card.dark p {
+      color: #d1d5db;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .side-box {
+      border: 1px solid #e5e7eb;
+      border-radius: 28px;
+      padding: 24px;
+      background: white;
+      margin-bottom: 16px;
+    }
+
+    .contact {
+      background: #111827;
+      color: white;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .contact p {
+      color: #d1d5db;
+      max-width: 700px;
+    }
+
+    .contact .button-primary {
+      background: white;
+      color: #111827;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .cards,
+      .about-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      h2 {
+        font-size: 30px;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="culdesac-logo.svg" alt="Culdesac Software logo" />
+        <div>
+          <div class="brand-title">Culdesac Software</div>
+          <div class="brand-subtitle">Simple software, thoughtfully built.</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<div class="container hero">
+  <main>
+    <section>
+      <div class="container hero">
+        <div>
+          <div class="badge">Independent software studio</div>
+          <img src="culdesac-logo.svg" alt="Culdesac Software" class="hero-logo" />
+          <h1>Software built with the clarity of a company that starts at the end of the street.</h1>
+          <p>
+            Culdesac Software creates focused, practical products with a clean user experience,
+            a founder’s attention to detail, and a bias toward simplicity over noise.
+          </p>
+          <div class="buttons">
+            <a href="#products" class="button-primary">Explore products</a>
+            <a href="#contact" class="button-secondary">Get in touch</a>
+          </div>
+        </div>
 
-<h1>
-Software built with clarity.
-</h1>
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="mini-card">
+              <div class="eyebrow">Approach</div>
+              <h3>Focused products</h3>
+              <p>Designed to solve real problems without unnecessary complexity.</p>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <h3>Founder-led</h3>
+                <p>Direct product thinking, fast decisions, careful execution.</p>
+              </div>
+              <div class="mini-card">
+                <h3>Built to last</h3>
+                <p>Clean systems, strong fundamentals, modern infrastructure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<p>
-Culdesac Software builds focused applications with thoughtful design and a bias toward simplicity.
-</p>
+    <section id="products" class="section-light">
+      <div class="container">
+        <h2>Current and future software from Culdesac Software.</h2>
+        <p class="section-copy">
+          A portfolio of practical applications shaped by real-world workflows and a strong point of view on usability.
+        </p>
 
-<a class="button" href="mailto:hello@culdesacsoftware.com">
-Contact Us
-</a>
+        <div class="cards">
+          <div class="card">
+            <div class="eyebrow">Featured</div>
+            <h3>RetroSpek</h3>
+            <p>A focused app experience built to capture and revisit the moments that matter.</p>
+          </div>
 
-</div>
+          <div class="card">
+            <div class="eyebrow">In development</div>
+            <h3>More focused apps</h3>
+            <p>Additional software products are being developed with the same emphasis on clarity, utility, and elegant execution.</p>
+          </div>
 
-<div class="container section">
+          <div class="card dark">
+            <div class="eyebrow">Philosophy</div>
+            <h3>Less clutter. More signal.</h3>
+            <p>Every product is intended to feel simple, fast, and inevitable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<h2>Products</h2>
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <h2>Founder-led software with a clean point of view.</h2>
+          <p class="section-copy">
+            Culdesac Software reflects an independent builder mindset: create products carefully,
+            keep the experience sharp, and focus on the details users actually notice. The company’s
+            name is a nod to where the work began — a personal office above the garage at the end of a cul-de-sac.
+          </p>
+        </div>
 
-<div class="card">
-<h3>RetroSpek</h3>
-<p>
-Capture and revisit the moments that matter.
-</p>
-</div>
+        <div>
+          <div class="side-box">
+            <h3>Principles</h3>
+            <p>Clarity over feature bloat<br />Craft over noise<br />Tools that respect the user’s time</p>
+          </div>
+          <div class="side-box" style="background:#f9fafb;">
+            <h3>Built for the long term</h3>
+            <p>The goal is not just to launch software, but to build a durable portfolio of products people genuinely want to keep using.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</div>
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>Let’s connect.</h2>
+        <p>
+          For product inquiries, partnerships, or early conversations, reach out and we’ll take it from there.
+        </p>
+        <div class="buttons">
+          <a href="mailto:hello@culdesacsoftware.com" class="button-primary">hello@culdesacsoftware.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<div class="container section">
-
-<h2>About</h2>
-
-<p>
-Culdesac Software is an independent software studio founded by Jon Damush.  
-The name reflects where the work began — a small office above the garage at the end of a cul-de-sac.
-</p>
-
-</div>
-
-<div class="container">
-
-<footer>
-
-© 2026 Culdesac Software
-
-</footer>
-
-</div>
-
+  <footer>
+    <div class="container">© 2026 Culdesac Software</div>
+  </footer>
 </body>
 </html>
